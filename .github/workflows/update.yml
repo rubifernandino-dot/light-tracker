@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '*/30 * * * *'  # Запуск каждые 30 минут
   workflow_dispatch:
+  
+permissions:
+  contents: write  # <--- Вот эту строчку нужно добавить
 
 jobs:
   update:
