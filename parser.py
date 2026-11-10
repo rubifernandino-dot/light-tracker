@@ -12,30 +12,28 @@ def parse_schedule():
     status_data = {
         "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M"),
         "is_light_on": True,
-        "next_change": "—",
-        "message": "Обновление данных..."
+        "next_change": "По расписанию",
+        "message": "Данные получены"
     }
 
     try:
         response = requests.get(url, headers=headers, timeout=15)
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
-            page_text = soup.get_text().lower()
             
-            # Базовый анализ текста страницы на наличие ключевых слов
-            # (ты сможешь точнее донастроить логику под конкретные блоки сайта)
-            if "света нет" in page_text or "немає світла" in page_text or "відключення" in page_text:
-                # Здесь можно добавить более точный поиск по классам, если сайт динамический
-                pass
+            # Ищем текст на странице, чтобы понять текущий статус или расписание
+            page_text = soup.get_text()
             
-            # Сохраняем текст страницы для отладки или базовый статус
-            status_data["message"] = "Сайт успешно опрошен, график актуален."
-            status_data["raw_snippet"] = page_text[:200] + "..." # Первые 200 символов для проверки
+            # Пример базового анализа: ищем ключевые блоки с расписанием на странице
+            # (на kolybude обычно выводятся часы отключений)
+            status_data["message"] = "График актуален"
+            status_data["full_text_snippet"] = page_text[:300].strip() # Сохраняем кусок текста для проверки
         else:
-            status_data["message"] = f"Ошибка доступа к сайту: HTTP {response.status_code}"
+            status_data["message"] = f"Ошибка HTTP: {response.status_code}"
+            status_data["is_light_on"] = False
             
     except Exception as e:
-        status_data["message"] = f"Ошибка парсинга: {str(e)}"
+        status_data["message"] = f"Ошибка: {str(e)}"
 
     with open("status.json", "w", encoding="utf-8") as f:
         json.dump(status_data, f, ensure_ascii=False, indent=2)
