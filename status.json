@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-10 15:33",
-  "is_light_on": false,
+  "updated_at": "2026-11-10 16:42",
+  "is_light_on": true,
   "queue": "3.2",
   "outages": [
     "00:00-02:30",
