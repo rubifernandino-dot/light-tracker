@@ -40,3 +40,10 @@ def parse_schedule():
 
 if __name__ == "__main__":
     parse_schedule()
+# Формируем красивый текст статуса
+light_status = "🟢 Свет есть (по расписанию)" if data.get("is_light_on") else "🔴 Света нет / Отключение"
+text_to_save = f"{light_status}\nОбновлено: {data.get('updated_at')}"
+
+# Сохраняем в текстовый файл
+with open("status.txt", "w", encoding="utf-8") as f:
+    f.write(text_to_save)
