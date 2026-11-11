@@ -4,32 +4,32 @@ on:
   schedule:
     - cron: '*/30 * * * *'  # Запуск каждые 30 минут
   workflow_dispatch:
-  
+
 permissions:
-  contents: write  # <--- Вот эту строчку нужно добавить
+  contents: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          
+
       - name: Install dependencies
         run: |
           pip install requests beautifulsoup4
-          
+
       - name: Run parser
         run: python parser.py
-        
+
       - name: Commit and push if changed
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git add status.json
+          git add status.json index.html
           git commit -m "Auto-update light status from kolybude.com" || exit 0
           git push
