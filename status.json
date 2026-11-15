@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-11-15 17:06",
-  "is_light_on": true,
+  "updated_at": "2026-11-15 18:05",
+  "is_light_on": false,
   "queue": "3.2",
   "outages": [
-    "17:30 – 19:30",
+    "18:00 – 20:30",
     "23:30 – 24:00"
   ],
   "duration": "По графику",
