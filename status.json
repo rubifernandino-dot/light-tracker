@@ -1,8 +1,13 @@
 {
-  "updated_at": "2026-11-20 01:12",
+  "updated_at": "2026-11-20 02:07",
   "is_light_on": true,
   "queue": "3.2",
-  "outages": [],
+  "outages": [
+    "04:30 – 06:30",
+    "10:30 – 12:30",
+    "16:30 – 19:30",
+    "22:30 – 24:00"
+  ],
   "duration": "По графику",
-  "message": "Ошибка: HTTPSConnectionPool(host='kolybude.com', port=443): Read timed out. (read timeout=15)"
+  "message": "Расписание обновлено"
 }
