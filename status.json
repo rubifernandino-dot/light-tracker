@@ -1,8 +1,12 @@
 {
-  "updated_at": "2026-11-28 12:41",
-  "is_light_on": true,
+  "updated_at": "2026-11-28 13:39",
+  "is_light_on": false,
   "queue": "3.2",
-  "outages": [],
+  "outages": [
+    "08:00 – 09:00",
+    "12:30 – 15:00",
+    "18:30 – 21:00"
+  ],
   "duration": "По графику",
   "message": "Расписание обновлено"
 }
